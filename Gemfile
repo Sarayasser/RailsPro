@@ -25,12 +25,10 @@ gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
-
-gem 'bootstrap-sass'
-gem 'active_bootstrap_skin'
+# gem "active_material", github: "vigetlabs/active_material"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'active_admin_theme'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
