@@ -2,12 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
-<<<<<<< HEAD
 gem 'font-awesome-sass'
-gem 'bootstrap-sass'
-=======
-
->>>>>>> e166866b55da2d50c09d1f02f03bb95ff64b4904
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3'
 # Use sqlite3 as the database for Active Record
