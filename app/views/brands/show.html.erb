@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>Thumbnail:</strong>
-  <%= @brand.thumbnail %>
+  <strong>Image:</strong>
+  <%= image_tag(@brand.brand_image, :size => "50x50") %>
 </p>
 
 <%= link_to 'Edit', edit_brand_path(@brand) %> |

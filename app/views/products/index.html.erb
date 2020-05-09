@@ -17,7 +17,7 @@
       <td><%= product.description %></td>
       <td><%= product.price %></td>
       <td><%= product.quantity %></td>
-      <td><%= product.image %></td>
+      <td><%= image_tag(product.product_image, :size => "50x50") %></td>
       
       <td><%= link_to 'Show', product_path(product) %></td>
       
