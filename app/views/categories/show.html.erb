@@ -5,10 +5,12 @@
   <%= @category.name %>
 </p>
 
+<% if @category.cat_image.attached? %>
 <p>
   <strong>Thumbnail:</strong>
   <%= image_tag(@category.cat_image , :size => "50x50") %>
 </p>
+<% end %>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
