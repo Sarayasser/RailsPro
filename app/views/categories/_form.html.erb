@@ -18,7 +18,12 @@
 
   <div class="field">
     <%= form.label :thumbnail %>
-    <%= form.text_field :thumbnail %>
+    <%= form.file_field :cat_image %>
+    <% if @category.cat_image.attached? %> 
+      <%= image_tag @category.cat_image%> 
+      <%= form.label :remove_cat_image %> 
+      <%= form.check_box :remove_cat_image %> 
+    <% end %>
   </div>
 
   <div class="actions">

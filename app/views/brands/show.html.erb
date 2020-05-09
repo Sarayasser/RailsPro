@@ -4,11 +4,12 @@
   <strong>Name:</strong>
   <%= @brand.name %>
 </p>
-
+<% if @brand.brand_image.attached? %> 
 <p>
-  <strong>Thumbnail:</strong>
-  <%= @brand.thumbnail %>
+  <strong>Image:</strong>
+  <%= image_tag(@brand.brand_image, :size => "50x50") %>
 </p>
+<%end%>
 
 <%= link_to 'Edit', edit_brand_path(@brand) %> |
 <%= link_to 'Back', brands_path %>
