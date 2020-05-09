@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_233638) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
   end
 
   create_table "stores", force: :cascade do |t|
