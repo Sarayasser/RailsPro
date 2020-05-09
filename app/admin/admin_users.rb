@@ -5,7 +5,7 @@ ActiveAdmin.register AdminUser do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at
+  permit_params :email,:encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at
   #
   # or
   #
@@ -16,9 +16,7 @@ ActiveAdmin.register AdminUser do
   # end
   form do |f|
     f.inputs "Admin Details" do
-      # f.input :username
       f.input :email
-
     end
     f.actions
   end
