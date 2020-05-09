@@ -63,6 +63,21 @@ class CartsController < ApplicationController
     end
   end
 
+  def make_order
+    @cart = Cart.find(params[:id])
+    puts @cart.product_items.inspect
+    @order = Order.new
+    @order.status = 'pending'
+    @order.save
+    @cart.product_items.each do |item|
+      @order.order_products.create(
+        product_id: item.product_id,
+        quantity: item.quantity,
+        total_price: @cart.total_price
+      )
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart

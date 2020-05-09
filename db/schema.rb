@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 2020_05_09_233638) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "order_id"
     t.integer "product_id"
+    t.integer "quantity"
+    t.decimal "total_price", precision: 10, scale: 2
   end
 
   create_table "orders", force: :cascade do |t|
