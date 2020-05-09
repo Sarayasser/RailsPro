@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_065537) do
-
+ActiveRecord::Schema.define(version: 2020_05_09_100129) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -26,28 +25,6 @@ ActiveRecord::Schema.define(version: 2020_05_09_065537) do
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
-
-  create_table "admin_users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-<<<<<<< HEAD
-  end
-
-  create_table "brands", force: :cascade do |t|
-    t.string "name"
-    t.string "thumbnail"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-=======
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -70,6 +47,21 @@ ActiveRecord::Schema.define(version: 2020_05_09_065537) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.integer "role_id"
+    t.string "image"
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.string "thumbnail"
@@ -77,7 +69,6 @@ ActiveRecord::Schema.define(version: 2020_05_09_065537) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
->>>>>>> 474ad7a1144dafa0e4f7d0abc41ce92d735fb5b9
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "thumbnail"
@@ -104,7 +95,6 @@ ActiveRecord::Schema.define(version: 2020_05_09_065537) do
     t.decimal "price", precision: 10, scale: 2
     t.text "description"
     t.integer "quantity"
-<<<<<<< HEAD
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -114,11 +104,6 @@ ActiveRecord::Schema.define(version: 2020_05_09_065537) do
     t.text "summary"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-=======
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-
->>>>>>> 474ad7a1144dafa0e4f7d0abc41ce92d735fb5b9
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
