@@ -277,11 +277,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
   active_admin_theme
-=======
-  active_bootstrap_skin
->>>>>>> f06d12ee295c8fbfe27094a7a1cc4a753f8322a7
   activeadmin!
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.4.1)
