@@ -7,7 +7,7 @@
 
 <p>
   <strong>Thumbnail:</strong>
-  <%= @category.thumbnail %>
+  <%= image_tag(@category.cat_image , :size => "50x50") %>
 </p>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
