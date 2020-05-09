@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(version: 2020_05_09_065537) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
+=======
+    t.string "name"
+    t.integer "role_id"
+    t.string "image"
+>>>>>>> 150b90e3c412d1fa5391cd779599df7b633ae558
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
