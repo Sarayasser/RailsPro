@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_05_08_140334) do
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -37,8 +36,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_140334) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-
-# ActiveRecord::Schema.define(version: 2020_05_08_140012) do
+  end
 
   create_table "brands", force: :cascade do |t|
     t.string "name"
@@ -75,7 +73,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_140334) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-
   end
 
 end
