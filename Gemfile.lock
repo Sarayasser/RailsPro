@@ -53,8 +53,7 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_bootstrap_skin (0.1.5)
-      bootstrap-sass (~> 3.4.1)
+    active_admin_theme (1.1.1)
     activejob (6.0.3)
       activesupport (= 6.0.3)
       globalid (>= 0.3.6)
@@ -278,7 +277,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_bootstrap_skin
+  active_admin_theme
   activeadmin!
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.4.1)

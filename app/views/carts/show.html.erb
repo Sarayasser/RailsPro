@@ -1,0 +1,22 @@
+<div class="keep-shopping pv1 mt4 has-text-right">
+  <%= link_to 'Keep Shopping', products_path  %>
+</div>
+<hr />
+<section class="section">
+  <%= render(@cart.product_items) %>
+
+  <div class="columns">
+    <div class="column">
+      <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " } %>
+    </div>
+    <div class="column total has-text-right">
+      <h4 class="title is-4">
+        <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
+      </h4>
+    </div>
+  </div>
+  <br><br>
+  <div class="column">
+    <%= button_to 'Make Order', make_order_path(@cart), method: :post %>
+  </div>
+</section>
