@@ -16,9 +16,9 @@ class Ability
     if user.role == 'admin'
         can :manage, :all
     elsif user.role == 'seller'
-        can :read,  ActiveAdmin::Page, :name => "Dashboard"
+        can :manage,  Product,user_id: user.id
     elsif user.role == 'buyer'
-        can :read   , :all
+        can :read   ,  Product,user_id: user.id
     end
     # The first argument to `can` is the action you are giving the user
     # permission to do.
