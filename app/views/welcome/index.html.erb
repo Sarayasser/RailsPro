@@ -38,12 +38,11 @@
         <div class="header-top header-top-one header-top-border pb-10">
             <div class="container">
                 <div class="row float-left m-3">
-                    <div class="col">
-                        <a href="#"> Register </a>
+                    <div class="col ">
+                        <%= link_to 'Register' , new_admin_user_registration_path %>
                     </div>
-                    |
-                    <div class="col">
-                        <a href="#"> Login </a>
+                    <div class="col ">
+                        <%= link_to 'Login' , new_admin_user_session_path %>
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-between">
