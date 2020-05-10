@@ -51,6 +51,7 @@ end
   def destroy  
     @cart = Cart.find(session[:cart_id])
     @product_item.destroy
+    @cart.destroy
     respond_to do |format|
       format.html { redirect_to cart_path(@cart), notice: 'product was successfully destroyed.' }
       format.json { head :no_content }

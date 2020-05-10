@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # devise_for :admin_users, ActiveAdmin::Devise.config
 
   devise_for :admin_users, {
-   :path=>:loglog,
+   :path=>:user,
    :controllers=>
     {:sessions=>"active_admin/devise/sessions",
      :passwords=>"active_admin/devise/passwords",
@@ -44,12 +44,17 @@ Rails.application.routes.draw do
 
   resources :brands
   resources :categories
-  
+
   root 'products#index'
+
 
   post 'carts/:id/make_order', to: 'carts#make_order', as: 'make_order'
 
+
+   root 'welcome#index'
+
   # root 'products#index' 
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

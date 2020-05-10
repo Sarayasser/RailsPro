@@ -5,7 +5,7 @@ ActiveAdmin.register AdminUser do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :username ,:email, :password , :password_confirmation , :role
+  permit_params :username ,:email, :password , :password_confirmation , :role ,:image
   # permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at
   #
   # or
@@ -16,12 +16,24 @@ ActiveAdmin.register AdminUser do
   #   permitted
   # end
 
+  index do
+      column :id
+      column :username
+      column :email
+      column "Image" do |admin_user|
+        image_tag(admin_user.image,width:100,height:80) if admin_user.image.attached?
+      end
+      column :role
+      column :created_at
+      actions
+      
+   end
 
-
-  form do |f|
+  form :html => { :enctype => "multipart/form-data" }  do |f|
     f.inputs "Admin Details" do
       f.input :username
       f.input :email
+      f.input :image ,:as => :file 
       f.input :password, :hint => "Not Required if not changing the password"  , :required => false
       f.input :password_confirmation
       f.input :role
@@ -39,6 +51,11 @@ ActiveAdmin.register AdminUser do
 
       super
     end
+
+     def permitted_params
+      params.permit admin_user: [:email ,:username,:image, :password, :password_confirmation]
+    end
+
   end
   
 
