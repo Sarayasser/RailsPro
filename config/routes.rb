@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # devise_for :admin_users, ActiveAdmin::Devise.config
 
   devise_for :admin_users, {
-   :path=>:loglog,
+   :path=>:user,
    :controllers=>
     {:sessions=>"active_admin/devise/sessions",
      :passwords=>"active_admin/devise/passwords",
