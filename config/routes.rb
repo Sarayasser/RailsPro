@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   resources :brands
   resources :categories
   
-  root 'welcome#index'
+  root 'products#index'
 
   post 'carts/:id/make_order', to: 'carts#make_order', as: 'make_order'
 
