@@ -20,6 +20,8 @@ class Ability
         cannot :read, ActiveAdmin::Page, :name => "Dashboard"
     elsif user.role == 'buyer'
         cannot :read, ActiveAdmin::Page, :name => "Dashboard"
+    else
+       can [:index,:show]
     end
     # The first argument to `can` is the action you are giving the user
     # permission to do.
