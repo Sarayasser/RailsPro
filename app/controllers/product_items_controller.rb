@@ -9,15 +9,16 @@ class ProductItemsController < ApplicationController
   def show
     
   end
-  def new
-    @product_item=ProductItem.new
-  end
+  # def new
+  #   @product_item=ProductItem.new
+  # end
 
 def edit
   
 end
   def create
     product=Product.find(params[:product_id])
+    current_cart=@current_cart
     @product_item=@cart.add_product(product)
 
     respond_to do |format|
@@ -51,12 +52,27 @@ end
   def destroy  
     @cart = Cart.find(session[:cart_id])
     @product_item.destroy
-    @cart.destroy
     respond_to do |format|
       format.html { redirect_to cart_path(@cart), notice: 'product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+  def add_quantity
+    @product_item = ProductItem.find(params[:id])
+    @product_item.quantity += 1
+    @product_item.save
+    redirect_to cart_path(@current_cart)
+  end
+  
+  def reduce_quantity
+    @product_item = ProductItem.find(params[:id])
+    if @product_item.quantity > 1
+      @product_item.quantity -= 1
+    end
+    @product_item.save
+    redirect_to cart_path(@current_cart)
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
