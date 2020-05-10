@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+    protect_from_forgery with: :exception
+
+      def access_denied(exception)
+	    redirect_to "/", alert: exception.message
+	  end
+
     include CurrentCart
     before_action :set_cart
     	
@@ -23,10 +29,6 @@ class ApplicationController < ActionController::Base
       
   end
 
-      protect_from_forgery with: :exception
-
-      def access_denied(exception)
-	    redirect_to "/", alert: exception.message
-	  end
-
+     
+ 	
 end
