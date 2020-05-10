@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   post 'carts/:id/make_order', to: 'carts#make_order', as: 'make_order'
 
 
-   root 'products#index'
+   root 'welcome#index'
 
   # root 'products#index' 
 
