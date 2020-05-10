@@ -1,22 +1,48 @@
-<div class="keep-shopping pv1 mt4 has-text-right">
-  <%= link_to 'Keep Shopping', products_path  %>
-</div>
-<hr />
-<section class="section">
-  <%= render(@cart.product_items) %>
+<div class="container">
+	<div class="row">
+		<div class="col-md">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<div class="row">
+							<div class="col-md">
+								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+							</div>
+							<div class="col-md">
+								<%# <%= button_to 'Keep Shopping',products_path,  class:"btn btn-default btn-sm btn-block" %> %>
+                <%= link_to 'Keep Shopping', products_path, class:"btn btn-info btn-sm btn-block"  %>
+									
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+          <%= render(@cart.product_items) %>
 
-  <div class="columns">
-    <div class="column">
-      <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " } %>
-    </div>
-    <div class="column total has-text-right">
-      <h4 class="title is-4">
-        <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
-      </h4>
-    </div>
-  </div>
-  <br><br>
-  <div class="column">
-    <%= button_to 'Make Order', make_order_path(@cart), method: :post %>
-  </div>
-</section>
+					
+
+					<div class="row">
+						
+						
+							<div class="col-xs-3">
+								<%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class:"btn btn-info btn-sm btn-block" %>
+							</div>
+						
+					</div>
+				</div>
+				<div class="panel-footer">
+					<div class="row text-center">
+						<div class="col-md">
+							<h4 class="text-right">Total <strong><%= number_to_currency(@cart.total_price) %></strong></h4>
+						</div>
+						<div class="col-md">
+							<%= button_to 'Make Order', make_order_path(@cart), method: :post , class:"btn btn-info btn-sm btn-block"%>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
