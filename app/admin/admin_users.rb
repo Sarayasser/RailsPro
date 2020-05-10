@@ -17,6 +17,7 @@ ActiveAdmin.register AdminUser do
   # end
 
 
+
   form do |f|
     f.inputs "Admin Details" do
       f.input :username
@@ -40,4 +41,5 @@ ActiveAdmin.register AdminUser do
     end
   end
   
+
 end

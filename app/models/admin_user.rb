@@ -14,7 +14,7 @@ class AdminUser < ApplicationRecord
 	  new_record? ? false : super
 	end
   
-  	devise :database_authenticatable, 
+  	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
 
