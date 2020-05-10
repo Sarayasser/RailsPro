@@ -25,6 +25,7 @@ gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+gem 'cancancan'
 # gem "active_material", github: "vigetlabs/active_material"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

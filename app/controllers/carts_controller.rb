@@ -73,16 +73,19 @@ class CartsController < ApplicationController
   def make_order
     @cart = Cart.find(params[:id])
     puts @cart.product_items.inspect
-    @order = Order.new
-    @order.status = 'pending'
-    @order.save
+    @order = Order.create(status: 'pending')
     @cart.product_items.each do |item|
+      @product = Product.find(item.product_id)
+      @product.quantity -= item.quantity
+      puts @product.inspect
+      puts @product.save
       @order.order_products.create(
         product_id: item.product_id,
         quantity: item.quantity,
         total_price: @cart.total_price
       )
     end
+    redirect_to root_path, notice: 'Order has been created and is waiting for seller confirmation.'
   end
 
   private
