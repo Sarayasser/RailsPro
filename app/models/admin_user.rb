@@ -1,7 +1,8 @@
 class AdminUser < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
- 
+  	has_one_attached :image
+
 	enum role: [:buyer, :seller, :admin]
 	after_initialize :set_default_role, :if => :new_record?
 
