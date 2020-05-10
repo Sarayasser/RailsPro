@@ -20,6 +20,10 @@ class Ability
         cannot :read, ActiveAdmin::Page, :name => "Dashboard"
     elsif user.role == 'buyer'
         cannot :read, ActiveAdmin::Page, :name => "Dashboard"
+        can [:create,:update] , CartsController
+        can [:index] , OrdersController
+    else
+       can [:index,:show] , CartsController
     end
     # The first argument to `can` is the action you are giving the user
     # permission to do.
