@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   ActiveAdmin::Devise::SessionsController.class_eval do
 
    def after_sign_in_path_for(resource)
-      if current_admin_user.role === "buyer"
+      if current_admin_user.role === "buyer" || current_admin_user.role === "seller" 
         "/products"
       elsif current_admin_user.role === "admin"
        "/admin"
