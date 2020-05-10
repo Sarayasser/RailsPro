@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   post 'carts/:id/make_order', to: 'carts#make_order', as: 'make_order'
-
+  # get 'search',to: "products#search"
 
    root 'welcome#index'
 

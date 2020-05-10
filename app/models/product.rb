@@ -24,5 +24,12 @@ class Product < ApplicationRecord
              throw :abort
          end
      end
+     def self.search(query)
+        if query
+          find(:all, :conditions => ['products_name LIKE ?', "% #{params[query]} %"] )
+        else
+          find(:all)
+        end
+      end
 
 end
