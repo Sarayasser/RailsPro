@@ -28,7 +28,7 @@ class Product < ApplicationRecord
      end
   def self.search(query)
     if query
-      product = Product.find_by(name: query)
+      product = Product.find_by(name: query) || Product.find_by(description: query)
       if product
         @products=Product.where(id: product.id)
       end
