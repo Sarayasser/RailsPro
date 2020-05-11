@@ -1,8 +1,37 @@
 <div class= "container">
-  <div class="row">
+<div class="row">
+<div class="col"
     <h1 class="mb-3">Listing Products</h1>
+</div>
+<div class="col float-right pb-3">
+                    <div class="col">
+                    <% if current_admin_user %>
+                    <%= link_to 'LogOut' , destroy_admin_user_session_path %>
+                    <% else %>
+                        <%= link_to 'Register' , new_admin_user_registration_path %>
+                    </div>
+                    <div class="col ">
+                        <%= link_to 'Login' , new_admin_user_session_path %>
+                    </div>
+                    <% end %>
+                </div>
+    
+</div>
+</div>
+<div class="row">
+<div class="col">
     <%= link_to 'New product', new_product_path , class: 'btn btn-success btn-sm text-light ml-4 mb-3' %>
-  </div>
+</div>
+<div class="col-6">
+    <%= form_tag products_path, :method => 'get' do %>
+        <p>
+        <%= text_field_tag :query, params[:query], :placeholder => "Search items here" %>
+        <%= submit_tag "Search", :name => nil %>
+        </p>
+        <% end %>
+</div>
+</div>
+  <br>
   <div class="row mt-3">
     <table class="table">
     <thead class="thead-dark">
@@ -16,7 +45,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @products.each do |product| %>
+    <%if @products %>
+      <% @products.each do |product|%>
         <tr>
           <td><%= product.name %></td>
           <td><%= product.description %></td>
@@ -35,6 +65,9 @@
                   data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
+      <%else%>
+      <% ' Product not found ' %>
+      <%end %>
       </tbody>
     </table>
   </div>

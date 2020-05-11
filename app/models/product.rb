@@ -26,12 +26,15 @@ class Product < ApplicationRecord
              throw :abort
          end
      end
-     def self.search(query)
-        if query
-          find(:all, :conditions => ['products_name LIKE ?', "% #{params[query]} %"] )
-        else
-          find(:all)
-        end
+  def self.search(query)
+    if query
+      product = Product.find_by(name: query) || Product.find_by(description: query)
+      if product
+        @products=Product.where(id: product.id)
       end
+    else
+      @products=Product.all
+    end
+  end 
 
 end

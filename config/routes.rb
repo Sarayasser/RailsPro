@@ -45,7 +45,6 @@ Rails.application.routes.draw do
   resources :brands
   resources :categories
 
-
   root 'products#index'
   # root 'welcome#index'
   get 'orders', to: 'orders#index'
