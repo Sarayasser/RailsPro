@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :products
   devise_for :users
   get 'pages/home'
+  post 'product_items/:id/add' => "product_items#add_quantity", as: "product_item_add"
+  post 'product_items/:id/reduce' => "product_items#reduce_quantity", as: "product_item_reduce"
+
   # get 'welcome/index'
   # devise_for :admin_users, ActiveAdmin::Devise.config
 

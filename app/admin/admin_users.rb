@@ -52,10 +52,6 @@ ActiveAdmin.register AdminUser do
       super
     end
 
-     def permitted_params
-      params.permit admin_user: [:email ,:username,:image, :password, :password_confirmation]
-    end
-
   end
   
 

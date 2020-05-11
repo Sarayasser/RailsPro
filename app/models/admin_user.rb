@@ -2,12 +2,16 @@ class AdminUser < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   	has_one_attached :image
-	  validates :username, presence: true
-	#   validates :username, :image ,presence: true
-  	def attach_picture_from_url(url)
-	  @admin_user.image = URI.parse(url)
-	  @admin_user.save!
-	end
+  	attr_accessor :remove_image
+
+    after_save :purge_image, if: :remove_image
+    private def purge_image
+    	puts "hellooooooooooooooooooooooooooo"
+        image.purge_later
+    end
+  	validates :username, :image, presence: true
+
+
 	enum role: [:buyer, :seller, :admin]
 	after_initialize :set_default_role, :if => :new_record?
 
@@ -22,4 +26,5 @@ class AdminUser < ApplicationRecord
   
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
 end
