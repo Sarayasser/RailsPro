@@ -26,7 +26,7 @@
 						
 						
 							<div class="col-xs-3">
-								<%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class:"btn btn-info btn-sm btn-block" %>
+								<%= button_to 'Empty Cart', cart_path(@cart), method: :delete, data: { confirm: "Are you sure? " }, class:"btn btn-info btn-sm btn-block" %>
 							</div>
 						
 					</div>
