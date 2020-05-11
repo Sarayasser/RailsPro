@@ -1,30 +1,32 @@
-<p>
-    <strong>Name:</strong>
-    <%= @product.name %>
-</p>
+<div class="container col-6 border">
+    <div class="media row  m-5">
+        <% if @product.product_image.attached? %>
+        <%= image_tag(@product.product_image, :size => "100x100", class: 'mr-4' ) %>
+        <% end%>
+        <div class="media-body">
+            <strong>Name:</strong>
+            <%= @product.name %>
 
-<p>
-    <strong>Description:</strong>
-    <%= @product.description %>
-</p>
+            <p>
+                <strong>Description:</strong>
+                <%= @product.description %>
+            </p>
 
-<p>
-    <strong>Price:</strong>
-    <%= @product.price %>
-    <%=  button_to  "Add to cart", product_items_path(product_id: @product) %> 
-</p>
+            <p>
+                <strong>Price:</strong>
+                <%= @product.price %>
+                <%=  button_to  "Add to cart", product_items_path(product_id: @product) %>
+            </p>
 
-<p>
-    <strong>Quantity:</strong>
-    <%= @product.quantity %>
-</p>
-<% if @product.product_image.attached? %> 
-<p>
-    <strong>Image:</strong>
-    <%= image_tag(@product.product_image, :size => "50x50" ) %>
-</p>
-<% end%>
+            <p>
+                <strong>Quantity:</strong>
+                <%= @product.quantity %>
+            </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
 
-<%= link_to 'Back', products_path %>
+            <%= link_to 'Edit', edit_product_path(@product) , class: 'btn btn-primary btn-sm text-light'%>
+
+            <%= link_to 'Back', products_path, class: 'btn btn-secondary btn-sm text-light' %>
+        </div>
+    </div>
+</div>

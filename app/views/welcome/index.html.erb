@@ -41,22 +41,27 @@
         <div class="header-top header-top-one header-top-border pb-10">
             <div class="container">
                 <div class="row float-left m-3">
-                    <div class="col ">
+                    <div class="col">
+                    <% if current_admin_user %>
+                    <%= link_to 'LogOut' , destroy_admin_user_session_path %>
+                    <% else %>
                         <%= link_to 'Register' , new_admin_user_registration_path %>
                     </div>
                     <div class="col ">
                         <%= link_to 'Login' , new_admin_user_session_path %>
                     </div>
+                    <% end %>
                 </div>
-                <div class="row align-items-center justify-content-between">
-
-                    <div class="col order-12 order-xs-12 order-lg-2 mt-10 mb-10">
-                        <!-- Header Advance Search Start -->
-                        <div class="header-advance-search">
-
-                            <form action="#">
-                                <div class="input"><input type="text" id="q" placeholder="Search your product"></div>
-                                <div class="select cat-select">
+                <div class="row float-right m-3">
+                            <div class="col-10">
+                            <%= form_tag products_path, :method => 'get' do %>
+                                <p>
+                                <%= text_field_tag :search, nil, :placeholder => "Search items here" %>
+                                <%= submit_tag "Search", :name => nil %>
+                                </p>
+                                <% end %>
+                            </div>
+                            <div class="select cat-select col-4">
                                     <select class="nice-select" id="cat-select">
                                         <option>All Categories</option>
                                         <option>Accessories</option>
@@ -79,14 +84,8 @@
 
                                     </select>
                                 </div>
-                                <div class="submit" id="btn"><button class="btn btn-info"><i class="icofont icofont-search-alt-1"></i></button></div>
-                            </form>
-
-                        </div><!-- Header Advance Search End -->
-                    </div>
-
                 </div>
-            </div>
+</div>
         </div><!-- Header Top End -->
 
         <!-- Header Bottom Start -->

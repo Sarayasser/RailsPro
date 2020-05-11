@@ -1,15 +1,15 @@
-<p id="notice"><%= notice %></p>
+<!--p id="notice"><%= notice %></p-->
 
-<p>
-  <strong>Name:</strong>
-  <%= @brand.name %>
-</p>
-<% if @brand.brand_image.attached? %> 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag(@brand.brand_image, :size => "50x50") %>
-</p>
-<%end%>
-
-<%= link_to 'Edit', edit_brand_path(@brand) %> |
-<%= link_to 'Back', brands_path %>
+<div class="container col-6 border">
+    <div class="media row  m-5">
+        <% if @brand.brand_image.attached? %>
+        <%= image_tag(@brand.brand_image, :size => "50x50", class: 'mr-4' ) %>
+        <%end%>
+      <div class="media-body">
+          <strong>Name:</strong>
+          <%= @brand.name %>
+          <%= link_to 'Edit', edit_brand_path(@brand) , class: 'btn btn-primary btn-sm text-light'%>
+          <%= link_to 'Back', brands_path , class: 'btn btn-secondary btn-sm text-light'%>
+      </div>
+    </div>
+</div>

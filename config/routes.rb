@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
    def after_sign_in_path_for(resource)
       if current_admin_user.role === "buyer" || current_admin_user.role === "seller" 
-        "/products"
+        "/"
       elsif current_admin_user.role === "admin"
        "/admin"
       end
@@ -38,22 +38,20 @@ Rails.application.routes.draw do
 
   ActiveAdmin::Devise::RegistrationsController.class_eval do
     def after_sign_up_path_for(_resource)
-      "/products"
+      "/"
     end
   end
 
   resources :brands
   resources :categories
-  
+
+  root 'products#index'
   # root 'welcome#index'
-
+  get 'orders', to: 'orders#index'
   post 'carts/:id/make_order', to: 'carts#make_order', as: 'make_order'
-
-
-   root 'welcome#index'
-
-  # root 'products#index' 
-
+  post 'orders/:id/approve', to: 'orders#approve', as: 'approve_order'
+  post 'orders/:id/confirm', to: 'orders#confirm', as: 'confirm_order'
+  delete 'orders/:id/destroy', to: 'orders#destroy', as: 'delete_order'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

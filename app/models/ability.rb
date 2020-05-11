@@ -11,20 +11,24 @@ class Ability
     #     can :read, :all
     #   end
     #
-    user ||= AdminUser.new
-
-    if user.role == 'admin'
+    admin_users ||= AdminUser.new
+# if admin_users.present?
+    if admin_users.role == 'admin'
         can :manage, :all
-    elsif user.role == 'seller'
-        can :read, [:index],  ProductsController 
+    elsif admin_users.role == 'seller'
+        can :read, [:index],  ProductsController
+        can :destroy , ProductsController 
+        can :edit, ProductsController
         cannot :read, ActiveAdmin::Page, :name => "Dashboard"
-    elsif user.role == 'buyer'
+    elsif admin_users.role == 'buyer'
         cannot :read, ActiveAdmin::Page, :name => "Dashboard"
         can [:create,:update] , CartsController
-        can [:index] , OrdersController
+        # can [:index,:new] , OrdersController
+        can [:index,:show] , ProductsController
     else
        can [:index,:show] , CartsController
     end
+  # end
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

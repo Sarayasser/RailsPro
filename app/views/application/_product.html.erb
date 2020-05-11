@@ -1,14 +1,16 @@
-<div class="card">
+<div class="card mr-2">
     <div class="card-body">
         <div class="card-title">
-            <p><%= product.name %></p>
+            <p class='font-weight-bold text-capitalize'><%= product.name%></p>
         </div>
         <div class="card-text">
-            <%= image_tag(product.product_image, :size => "50x50") %>
-            <p> <small>$</small> <%= product.price%></p>
+            <% if product.product_image.attached? %>
+                <%= image_tag(product.product_image, :size => "70x70") %>
+            <%end%>
+            <p class='font-weight-bold mt-3 mb-3'>$<%= product.price%></p>
         </div>
         <div class="card-footer">
-            <%= link_to  "View Product", product_path(product) %>
+            <%= link_to  "View Product", product_path(product) , class: ' btn btn-primary btn-sm text-light text-capitalize' %>
         </div>
     </div>
 </div>

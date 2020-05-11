@@ -10,10 +10,8 @@ class AdminUser < ApplicationRecord
         image.purge_later
     end
   	validates :username, :image, presence: true
- #  	def attach_picture_from_url(url)
-	#   @admin_user.image = URI.parse(url)
-	#   @admin_user.save!
-	# end
+
+
 	enum role: [:buyer, :seller, :admin]
 	after_initialize :set_default_role, :if => :new_record?
 
