@@ -12,13 +12,14 @@ class Product < ApplicationRecord
     has_many :orders, through: :order_products
     belongs_to :category
     belongs_to :brand
+    belongs_to :seller, :class_name => "User"
 
     has_one_attached :product_image
     validates :name, presence: true,
                     length: { minimum: 2 }
-    validates :description, :price, :product_image, :quantity, presence: true
+    validates :description, :price, :quantity, presence: true
     private
-    
+
      def not_referenced_by_any_product_item
          unless product_items.empty?
              errors.add(:base, "product items are present")
