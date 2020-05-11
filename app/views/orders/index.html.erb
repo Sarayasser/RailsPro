@@ -20,7 +20,10 @@
           <td><%= order.status %></td>
           <td><%= order.created_at %></td>
           <% if current_admin_user.role == 'seller' %>
-            <td><%= button_to 'Confirm', confirm_order_path(order.id), method: :post %></td>
+            <td><%= button_to 'Approve', approve_order_path(order.id), method: :post %></td>
+          <% end %>
+          <% if current_admin_user.role == 'seller' %>
+            <td><%= button_to 'Confirm Deleviery', confirm_order_path(order.id), method: :post %></td>
           <% end %>
           <% if current_admin_user.role == 'seller' or current_admin_user.role == 'buyer' %>
           <td><%= button_to 'Cancel', delete_order_path(order.id),

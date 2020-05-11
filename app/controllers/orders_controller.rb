@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def index
     if current_admin_user and current_admin_user.role == 'seller'
-      @orders = current_admin_user.order_products.where(status: "pending")
+      @orders = current_admin_user.order_products
     elsif current_admin_user and current_admin_user.role == 'buyer'
       @orders = current_admin_user.orders
     else
@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def confirm
+  def approve
     @order_product = OrderProduct.find(params[:id])
     @order_product.status = 'confirmed'
     @order_product.save
@@ -28,6 +28,26 @@ class OrdersController < ApplicationController
     end
     if confirmed
       order.status = 'confirmed'
+      order.save
+    end
+    redirect_to orders_path
+  end
+
+  def confirm
+    @order_product = OrderProduct.find(params[:id])
+    @order_product.status = 'delivered'
+    @order_product.save
+
+    confirmed = true
+    order = @order_product.order
+    order.order_products.each do |item|
+      if item.status !== 'delivered'
+        cofirmed = false
+        break
+      end
+    end
+    if confirmed
+      order.status = 'delivered'
       order.save
     end
     redirect_to orders_path
