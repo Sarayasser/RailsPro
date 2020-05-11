@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+    before_action :authenticate_user! , :except=>[:show,:index]
   def index
     if current_admin_user and current_admin_user.role == 'seller'
       @orders = current_admin_user.order_products
