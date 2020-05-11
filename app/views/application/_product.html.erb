@@ -4,7 +4,9 @@
             <p class='font-weight-bold text-capitalize'><%= product.name%></p>
         </div>
         <div class="card-text">
-            <%= image_tag(product.product_image, :size => "70x70") %>
+            <% if product.product_image.attached? %>
+                <%= image_tag(product.product_image, :size => "70x70") %>
+            <%end%>
             <p class='font-weight-bold mt-3 mb-3'>$<%= product.price%></p>
         </div>
         <div class="card-footer">
