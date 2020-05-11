@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :products, :foreign_key => "seller_id"
   has_many :orders, through: :products
+  has_many :order_products, through: :orders
 end

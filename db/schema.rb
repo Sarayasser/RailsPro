@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_05_11_195936) do
 
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -95,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_195936) do
     t.integer "product_id"
     t.integer "quantity"
     t.decimal "total_price", precision: 10, scale: 2
+    t.string "status"
   end
 
   create_table "orders", force: :cascade do |t|
