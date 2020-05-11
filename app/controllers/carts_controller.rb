@@ -26,33 +26,33 @@ class CartsController < ApplicationController
 
   # POST /categories
   # POST /categories.json
-  # def create
-  #   @cart = Cart.new(cart_params)
+  def create
+    @cart = Cart.new(cart_params)
 
-  #   respond_to do |format|
-  #     if @cart.save
-  #       format.html { redirect_to @cart, notice: 'cart was successfully created.' }
-  #       format.json { render :show, status: :created, location: @cart }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @cart.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+    respond_to do |format|
+      if @cart.save
+        format.html { redirect_to @cart, notice: 'cart was successfully created.' }
+        format.json { render :show, status: :created, location: @cart }
+      else
+        format.html { render :new }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @cart.update(cart_params)
-  #       format.html { redirect_to @cart, notice: 'cart was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @cart }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @cart.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if @cart.update(cart_params)
+        format.html { redirect_to @cart, notice: 'cart was successfully updated.' }
+        format.json { render :show, status: :ok, location: @cart }
+      else
+        format.html { render :edit }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /categories/1
   # DELETE /categories/1.json
@@ -90,9 +90,9 @@ class CartsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_cart
-    #   @cart = Cart.find(params[:id])
-    # end
+    def set_cart
+      @cart = Cart.find(params[:id])
+    end
   
 
     # def cart_params
