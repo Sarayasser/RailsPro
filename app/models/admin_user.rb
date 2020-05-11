@@ -2,7 +2,8 @@ class AdminUser < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   	has_one_attached :image
-  	validates :username, :image, presence: true
+	  validates :username, presence: true
+	#   validates :username, :image ,presence: true
   	def attach_picture_from_url(url)
 	  @admin_user.image = URI.parse(url)
 	  @admin_user.save!

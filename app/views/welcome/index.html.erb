@@ -42,11 +42,15 @@
             <div class="container">
                 <div class="row float-left m-3">
                     <div class="col ">
+                    <% if current_admin_user %>
+                    <%= link_to 'LogOut' , destroy_admin_user_session_path %>
+                    <% else %>
                         <%= link_to 'Register' , new_admin_user_registration_path %>
                     </div>
                     <div class="col ">
                         <%= link_to 'Login' , new_admin_user_session_path %>
                     </div>
+                    <% end %>
                 </div>
                 <div class="row float-right m-3">
                             <div class="col-10">

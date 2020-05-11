@@ -22,6 +22,7 @@ class Ability
         cannot :read, ActiveAdmin::Page, :name => "Dashboard"
         can [:create,:update] , CartsController
         can [:index] , OrdersController
+        can [:index,:show] , ProductsController
     else
        can [:index,:show] , CartsController
     end
