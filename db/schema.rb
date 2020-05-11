@@ -73,10 +73,6 @@ ActiveRecord::Schema.define(version: 2020_05_11_213727) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "brand_id"
     t.integer "category_id"
-    t.index "\"brand\"", name: "index_brands_categories_on_brand"
-    t.index "\"category\"", name: "index_brands_categories_on_category"
-    t.index ["brand_id"], name: "index_brands_categories_on_brand_id"
-    t.index ["category_id"], name: "index_brands_categories_on_category_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -124,8 +120,8 @@ ActiveRecord::Schema.define(version: 2020_05_11_213727) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"
-    t.integer "brand_id"
     t.integer "seller_id"
+    t.integer "brand_id"
   end
 
   create_table "stores", force: :cascade do |t|
