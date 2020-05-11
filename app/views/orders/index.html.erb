@@ -1,4 +1,5 @@
 <div class= "container">
+<% if current_admin_user %>
   <div class="row">
     <h1 class="mb-3">Listing Orders</h1>
   </div>
@@ -18,14 +19,20 @@
           <td><%= order.id %></td>
           <td><%= order.status %></td>
           <td><%= order.created_at %></td>
-          <td><%= link_to 'Confirm', '#' %></td>
-          
-          <td><%= link_to 'Cancel', '#',
+          <% if current_admin_user.role == 'seller' %>
+            <td><%= button_to 'Confirm', confirm_order_path(order.id), method: :post %></td>
+          <% end %>
+          <% if current_admin_user.role == 'seller' or current_admin_user.role == 'buyer' %>
+          <td><%= button_to 'Cancel', delete_order_path(order.id),
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
       </tbody>
     </table>
   </div>
+  <% else %>
+    <h1>Please sign in to access your orders</h1>
+  <% end %>
 </div>
