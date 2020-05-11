@@ -1,32 +1,39 @@
 <%= form_with(model: brand, local: true) do |form| %>
-  <% if brand.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
+<% if brand.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
 
-      <ul>
+    <ul>
         <% brand.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li><%= message %></li>
         <% end %>
-      </ul>
+    </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+    <%= form.label :Name %>
+    <%= form.text_field :name, class: 'form-control' %>
+</div>
+
+<div class="input-group mb-3 form-group">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Category</label>
     </div>
-  <% end %>
+    <%= collection_select( :brand, :category_ids, Category.all, :id, :name, {prompt: false}, {class: 'custom-select form-control',id: "inputGroupSelect01"})%>
+</div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
+<div class="form-group">
     <%= form.label :Image %>
-    <%= form.file_field :brand_image %>
-    <% if @brand.brand_image.attached? %> 
-      <%= image_tag @brand.brand_image%> 
-      <%= form.label :remove_brand_image %> 
-      <%= form.check_box :remove_brand_image %> 
+    <%= form.file_field :brand_image , class: 'form-control-file'%>
+    <% if @brand.brand_image.attached? %>
+      <%= image_tag @brand.brand_image, class: 'form-control'%>
+      <%= form.label :remove_brand_image %>
+      <%= form.check_box :remove_brand_image %>
     <% end %>
-  </div>
+</div>
 
-  <div class="actions">
+<div class="form-group">
     <%= form.submit %>
-  </div>
+</div>
 <% end %>
