@@ -48,10 +48,11 @@ Rails.application.routes.draw do
   resources :brands
   resources :categories
 
-  # root 'products#index'
-  root 'welcome#index'
+  root 'products#index'
+  # root 'welcome#index'
   get 'orders', to: 'orders#index'
   post 'carts/:id/make_order', to: 'carts#make_order', as: 'make_order'
+  post 'orders/:id/approve', to: 'orders#approve', as: 'approve_order'
   post 'orders/:id/confirm', to: 'orders#confirm', as: 'confirm_order'
   delete 'orders/:id/destroy', to: 'orders#destroy', as: 'delete_order'
 

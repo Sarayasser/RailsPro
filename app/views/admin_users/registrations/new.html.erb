@@ -16,6 +16,11 @@
   <div class="field">
     <%= f.label :image %><br />
     <%= f.file_field :image %>
+    <% if @admin_user.image.attached? %> 
+      <%= image_tag @admin_user.image%> 
+      <%= f.label :remove_image %> 
+      <%= f.check_box :remove_image %> 
+    <% end %>
   </div>
 
   <div class="field">
@@ -29,6 +34,11 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.select :role, AdminUser.roles.keys.filter_map {|key| key if !key.match(/admin/) } %>
   </div>
 
   <div class="actions">

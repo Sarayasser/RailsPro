@@ -6,5 +6,6 @@ class Category < ApplicationRecord
         cat_image.purge_later
     end
     has_many :products
+    has_and_belongs_to_many :brands
     has_one_attached :cat_image
 end

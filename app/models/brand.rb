@@ -6,5 +6,6 @@ class Brand < ApplicationRecord
         brand_image.purge_later
     end
     has_many :products
+    has_and_belongs_to_many :category
     has_one_attached :brand_image
 end

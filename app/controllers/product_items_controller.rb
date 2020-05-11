@@ -2,6 +2,7 @@ class ProductItemsController < ApplicationController
   include CurrentCart
   before_action :set_product_item, only: [:show, :edit, :update, :destroy]
   before_action :set_cart, only: [:create]
+  before_action :authenticate_user! , :except=>[:show,:index]
 
   def index
     @product_items=ProductItem.all
