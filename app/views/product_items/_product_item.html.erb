@@ -1,30 +1,32 @@
-<div class="row">
-          <% if product_item.product.product_image.attached?  %>
-          <div class="col-2 img-responsive" >
-              
-              <%= image_tag(product_item.product.product_image, :size => "50x50" ) %>
-					</div>
-          
-          <% end%>
-          <div class="col-2">
-							<h4 class="product-name"><strong><%= product_item.product.name %></strong></h4><h4><small><%= product_item.product.description %></small></h4>
-					</div>
-          <div class="col-2">
-							<div class="col-md-3 text-right">
-								<h6><strong><%= number_to_currency(product_item.total_price) %>
-							</div>
-              <div class="col-2">
-              <h4><strong><%= product_item.quantity %></strong></h4>
-							</div>
-              <div class="col">
-                  <%= link_to "Add one", product_item_add_path(:id => product_item), method: :post %>
-                  <%= link_to "Reduce one", product_item_reduce_path(:id => product_item), method: :post %>
-                  <%= link_to 'Remove Item', product_item, method: :delete, data: { confirm: "Are you sure? " }, class:"btn btn-info btn-sm btn-block" %>
-							</div>
-            </div>
 
-  </div>
-  
-
-      
-						
+		<tr>
+			<td>
+				<% if product_item.product.product_image.attached?  %>
+          <div class=" img-responsive" >
+            <%= image_tag(product_item.product.product_image, :size => "50x50" ) %>
+					</div>
+        <% end%>
+			</td>
+      <td>
+        <h4 class="product-name"><strong><%= product_item.product.name %></strong></h4>
+      </td>
+      <td>
+        <h4><small><%= product_item.product.description %></small></h4>
+      </td>
+      <td>
+        <h4><strong><%= product_item.quantity %></strong></h4>
+      </td>
+      <td>
+        <h6><strong><%= number_to_currency(product_item.total_price) %>
+      </td>
+      <td>
+        <%= link_to "Add one", product_item_add_path(:id => product_item), method: :post, class:"btn btn-info text-light btn-sm btn-block" %>
+      </td>
+      <td>
+        <%= link_to "Reduce one", product_item_reduce_path(:id => product_item), method: :post, class:"btn btn-info text-light btn-sm btn-block" %>
+      </td>
+      <td>
+        <%= link_to 'Remove Item', product_item, method: :delete, data: { confirm: "Are you sure? " }, class:"btn btn-info text-light btn-sm btn-block" %>
+      </td>
+		</tr>
+	
