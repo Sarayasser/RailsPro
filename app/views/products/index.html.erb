@@ -4,9 +4,15 @@
             <div class="col-6">
                 <div class="row">
                     <h1 class="mb-3">Listing Products</h1>
-                    <% if current_admin_user && current_admin_user.role == "seller" %>
+<<<<<<< HEAD
+                    <% if current_admin_user && current_admin_user.role == "seller"%>
                     <%= link_to 'New product', new_product_path , class: 'btn btn-success btn-sm text-light ml-4 mb-3' %>
                 <%end%>
+=======
+                    <% if current_admin_user && current_admin_user.role == "seller" %>
+                        <%= link_to 'New product', new_product_path , class: 'btn btn-success btn-sm text-light ml-4 mb-3' %>
+                    <%end%>
+>>>>>>> 405a24d4a1c8d9b1e382aa888fd9f837fcd3a4d3
                     </div>
             </div>
     <div class="float-right col-3">

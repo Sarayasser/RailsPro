@@ -7,3 +7,10 @@ which provides the website the result needed with optimal solution provided.
 
 Each page in the project has it's own model and each model is associated with a view and 
 controller.
+
+This design pattern has solved the problem of code complexity and made it much easier to trace
+the issues that rise during implementation of the code.Also it is much more flexible to add or
+delete from the code and it resolves the problem of bulk code.
+
+Also this design pattern greatly helps with code reusing as when the code is divided it becomes
+easier to use certain functionalities.
