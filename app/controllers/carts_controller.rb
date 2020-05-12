@@ -77,8 +77,7 @@ class CartsController < ApplicationController
     @cart.product_items.each do |item|
       @product = Product.find(item.product_id)
       @product.quantity -= item.quantity
-      puts @product.inspect
-      puts @product.save
+      @product.save
       @order.order_products.create(
         product_id: item.product_id,
         quantity: item.quantity,
