@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
 
     def access_denied(exception)
 	    redirect_to "/", alert: exception.message
-	  end
+    end
+    
+    def current_ability
+      @current_ability ||= Ability.new(current_admin_user)
+    end
 
 
 
@@ -38,6 +42,6 @@ class ApplicationController < ActionController::Base
           @current_cart = Cart.create
           session[:cart_id] = @current_cart.id
         end
-      
-  end
+    end
+  
 end

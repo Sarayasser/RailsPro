@@ -18,8 +18,9 @@ class Ability
         can :read, [:index],  ProductsController
         can :destroy , ProductsController 
         can :edit, ProductsController
-        can :read , Store ,:seller_id => user.id
+        can :read  , Store ,:seller_id => user.id
         can :create , Store 
+        can :update , Store ,:seller_id => user.id
         # cannot :read, ActiveAdmin::Page, :name => "Dashboard"
     elsif user.role == 'buyer'
         cannot :read, ActiveAdmin::Page, :name => "Dashboard"

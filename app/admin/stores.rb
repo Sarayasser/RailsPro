@@ -7,19 +7,34 @@ ActiveAdmin.register Store do
   #
    permit_params :name, :summary ,:seller_id
 
-   form  do |f|
-    f.object.seller_id = current_admin_user.id
-    f.inputs "Store Details" do
-      f.input :name
-      f.input :summary
-      if current_admin_user.role == "admin"
-        f.input :seller_id , as: :select, collection: AdminUser.all 
-      else
-        f.input :seller_id, :default => current_admin_user.id
+ 
+    form  do |f|
+    
+      f.inputs "Store Details" do
+        f.input :name
+        f.input :summary
+        if current_admin_user.role == "admin"
+          f.input :seller_id , as: :select, collection: AdminUser.all 
+        else
+          f.input :seller_id, input_html: { value: current_admin_user.id } , as: :hidden
+        end
       end
+      f.actions
     end
-    f.actions
-  end
+
+
+
+ controller do
+        
+        def new
+          if Store.where(:seller_id => current_admin_user.id).any? 
+            flash[:notice] =  "you can't create more than one store"
+            redirect_to '/admin/stores'
+          else
+            @store = Store.new
+          end
+        end
+    end
 
   #
   # or

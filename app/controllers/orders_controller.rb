@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :authenticate_user! , :except=>[:show,:index]
+    before_action :authenticate_admin_user! , :except=>[:show,:index]
   def index
     if current_admin_user and current_admin_user.role == 'seller'
       @orders = current_admin_user.order_products
@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
     confirmed = true
     order = @order_product.order
     order.order_products.each do |item|
-      if item.status !== 'confirmed'
+      if item.status != 'confirmed'
         cofirmed = false
         break
       end
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
     confirmed = true
     order = @order_product.order
     order.order_products.each do |item|
-      if item.status !== 'delivered'
+      if item.status != 'delivered'
         cofirmed = false
         break
       end
@@ -55,8 +55,14 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order = OrderProduct.find(params[:id])
-    @order..status !== 'canceled'
+    if current_admin_user and current_admin_user.role == 'seller'
+      @order = OrderProduct.find(params[:id])
+      @order.status = 'canceled'
+      @order.save
+    elsif current_admin_user and current_admin_user.role == 'buyer'
+      @order = Order.find(params[:id])
+      @order.destroy
+    end
     redirect_to orders_path
   end
 end
