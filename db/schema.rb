@@ -73,6 +73,10 @@ ActiveRecord::Schema.define(version: 2020_05_11_235334) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "brand_id"
     t.integer "category_id"
+    t.index "\"brand\"", name: "index_brands_categories_on_brand"
+    t.index "\"category\"", name: "index_brands_categories_on_category"
+    t.index ["brand_id"], name: "index_brands_categories_on_brand_id"
+    t.index ["category_id"], name: "index_brands_categories_on_category_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -131,6 +135,21 @@ ActiveRecord::Schema.define(version: 2020_05_11_235334) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "seller_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
+    t.integer "role_id"
+    t.string "name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
