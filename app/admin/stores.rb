@@ -5,7 +5,22 @@ ActiveAdmin.register Store do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :summary
+   permit_params :name, :summary ,:seller_id
+
+   form  do |f|
+    f.object.seller_id = current_admin_user.id
+    f.inputs "Store Details" do
+      f.input :name
+      f.input :summary
+      if current_admin_user.role == "admin"
+        f.input :seller_id , as: :select, collection: AdminUser.all 
+      else
+        f.input :seller_id, :default => current_admin_user.id
+      end
+    end
+    f.actions
+  end
+
   #
   # or
   #

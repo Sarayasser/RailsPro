@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   resources :product_items
   resources :carts
   resources :products
-  devise_for :users
+  resources :stores
+  
   get 'pages/home'
   post 'product_items/:id/add' => "product_items#add_quantity", as: "product_item_add"
   post 'product_items/:id/reduce' => "product_items#reduce_quantity", as: "product_item_reduce"
 
   # get 'welcome/index'
-  # devise_for :admin_users, ActiveAdmin::Devise.config
 
   devise_for :admin_users, {
    :path=>:user,
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   }
 
   ActiveAdmin.routes(self)
-  # devise_for :admin_users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
 
   ActiveAdmin::Devise::SessionsController.class_eval do
 

@@ -11,16 +11,17 @@ class Ability
     #     can :read, :all
     #   end
     #
-    admin_users ||= AdminUser.new
-# if admin_users.present?
-    if admin_users.role == 'admin'
+    user ||= AdminUser.new
+    if user.role == 'admin'
         can :manage, :all
-    elsif admin_users.role == 'seller'
+    elsif user.role == 'seller'
         can :read, [:index],  ProductsController
         can :destroy , ProductsController 
         can :edit, ProductsController
-        cannot :read, ActiveAdmin::Page, :name => "Dashboard"
-    elsif admin_users.role == 'buyer'
+        can :read , Store ,:seller_id => user.id
+        can :create , Store 
+        # cannot :read, ActiveAdmin::Page, :name => "Dashboard"
+    elsif user.role == 'buyer'
         cannot :read, ActiveAdmin::Page, :name => "Dashboard"
         can [:create,:update] , CartsController
         # can [:index,:new] , OrdersController

@@ -19,11 +19,6 @@
 </div>
 
 <div class="form-group">
-    <%= form.label :Description %>
-    <%= form.text_area :description, class: 'form-control' %>
-</div>
-
-<div class="form-group">
     <%= form.label :Price %>
     <%= form.text_field :price , class: 'form-control' %>
 </div>
@@ -31,6 +26,11 @@
 <div class="form-group d-block">
     <%= form.label :Quantity %>
     <%= form.text_field :quantity ,class: 'form-control' %>
+</div>
+
+<div class="form-group">
+    <%= form.label :Description %>
+    <%= form.text_area :description, class: 'form-control' %>
 </div>
 
 <div class="input-group mb-3 form-group">
@@ -51,9 +51,9 @@
     <%= form.label :Image %>
     <%= form.file_field :product_image, class: 'form-control-file' %>
     <% if @product.product_image.attached? %>
-        <%= image_tag @product.product_image ,class: 'form-control'%>
-        <%= form.label :remove_product_image %>
-        <%= form.check_box :remove_product_image %>
+    <%= image_tag @product.product_image ,class: 'form-control'%>
+    <%= form.label :remove_product_image %>
+    <%= form.check_box :remove_product_image %>
     <% end %>
 </div>
 <div class="form-group">
