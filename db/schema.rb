@@ -120,9 +120,9 @@ ActiveRecord::Schema.define(version: 2020_05_11_235334) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"
+    t.integer "brand_id"
     t.integer "seller_id"
     t.integer "store_id"
-    t.integer "brand_id"
   end
 
   create_table "stores", force: :cascade do |t|

@@ -29,5 +29,6 @@ class AdminUser < ApplicationRecord
     has_many :products, :foreign_key => "seller_id"
     has_many :orders, through: :products
     has_many :order_products, through: :orders
-    has_one :stores, :foreign_key => "seller_id"
+    has_one :store, :foreign_key => "seller_id"
+
 end
