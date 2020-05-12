@@ -30,6 +30,8 @@ ActiveAdmin.register Store do
           if Store.where(:seller_id => current_admin_user.id).any? 
             flash[:notice] =  "you can't create more than one store"
             redirect_to '/admin/stores'
+          else
+            @store = Store.new
           end
         end
     end

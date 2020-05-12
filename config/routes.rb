@@ -40,7 +40,11 @@ Rails.application.routes.draw do
 
   ActiveAdmin::Devise::RegistrationsController.class_eval do
     def after_sign_up_path_for(_resource)
-      "/"
+      if current_admin_user.role === "seller"
+        "/admin/stores/new"
+      else
+       "/"
+      end
     end
   end
 
