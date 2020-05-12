@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
     protect_from_forgery with: :exception
 
     before_action :configure_permitted_parameters, if: :devise_controller?
@@ -17,8 +18,10 @@ class ApplicationController < ActionController::Base
 
 
 
-    include CurrentCart
-    before_action :set_cart
+    # include CurrentCart
+    # before_action :set_cart
+
+
     before_action :current_cart
     private
       def current_cart
