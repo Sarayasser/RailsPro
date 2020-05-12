@@ -16,8 +16,8 @@ class Ability
         can :manage, :all
     elsif user.role == 'seller'
         can :read, [:index],  ProductsController
-        can :destroy , ProductsController 
-        can :edit, ProductsController
+        can :destroy , Product , seller_id: user.id
+        can :edit, Product , seller_id: user.id
         can :read  , Store ,:seller_id => user.id
         can :create , Store 
         can :update , Store ,:seller_id => user.id
