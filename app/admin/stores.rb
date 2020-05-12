@@ -34,6 +34,16 @@ ActiveAdmin.register Store do
             @store = Store.new
           end
         end
+
+        def create
+          @store = Store.new(permitted_params[:store])
+          if @store.save
+            redirect_to "/"
+          else  
+            render "new"
+          end
+        end
+
     end
 
   #
