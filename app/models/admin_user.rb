@@ -6,7 +6,6 @@ class AdminUser < ApplicationRecord
 
     after_save :purge_image, if: :remove_image
     private def purge_image
-    	puts "hellooooooooooooooooooooooooooo"
         image.purge_later
     end
   	validates :username, :image, presence: true
@@ -27,4 +26,8 @@ class AdminUser < ApplicationRecord
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+    has_many :products, :foreign_key => "seller_id"
+    has_many :orders, through: :products
+    has_many :order_products, through: :orders
+    has_one :stores, :foreign_key => "seller_id"
 end
