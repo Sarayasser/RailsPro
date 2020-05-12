@@ -48,8 +48,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brands
-  resources :categories
 
   root 'products#index'
   # root 'welcome#index'
