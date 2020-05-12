@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :product_items
   resources :carts
   resources :products
+  resources :stores
+  
   get 'pages/home'
   post 'product_items/:id/add' => "product_items#add_quantity", as: "product_item_add"
   post 'product_items/:id/reduce' => "product_items#reduce_quantity", as: "product_item_reduce"

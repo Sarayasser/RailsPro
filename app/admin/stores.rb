@@ -8,10 +8,15 @@ ActiveAdmin.register Store do
    permit_params :name, :summary ,:seller_id
 
    form  do |f|
+    f.object.seller_id = current_admin_user.id
     f.inputs "Store Details" do
       f.input :name
       f.input :summary
-      f.input :seller_id , as: :select, collection: AdminUser.all
+      if current_admin_user.role == "admin"
+        f.input :seller_id , as: :select, collection: AdminUser.all 
+      else
+        f.input :seller_id, :default => current_admin_user.id
+      end
     end
     f.actions
   end
