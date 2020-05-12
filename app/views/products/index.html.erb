@@ -9,6 +9,12 @@
                 <%end%>
                     </div>
             </div>
+    <div class="float-right col-3">
+            <%= form_tag products_path, :method => 'get' do %>
+                <%= text_field_tag :query, params[:query], :placeholder => "Search items here", class: "d-block" %>
+                <%= submit_tag "Search", :name => nil, class:"ml-3" %>
+            <% end %>
+        </div>
         </div>
         <br>
         <div class="row mt-3">
