@@ -32,6 +32,7 @@
                 <tbody>
                     <%if @products %>
                     <% @products.each do |product|%>
+                    <%if product.quantity > 0 %>
                     <tr>
                         <td><%= product.name %></td>
                         <td><%= product.description %></td>
@@ -53,6 +54,7 @@
                         <%end%>
                     </tr>
                     <% end %>
+                    <%end %>
                     <%else%>
                     <% ' Product not found ' %>
                     <%end %>
