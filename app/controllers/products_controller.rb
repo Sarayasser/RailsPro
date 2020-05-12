@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_admin_users! , :except=>[:show,:index]  
+  before_action :authenticate_admin_user! , :except=>[:show,:index]  
   def index
     @products = Product.search(params[:query])
   end
