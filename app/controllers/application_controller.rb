@@ -38,6 +38,6 @@ class ApplicationController < ActionController::Base
           @current_cart = Cart.create
           session[:cart_id] = @current_cart.id
         end
-      
-  end
+    end
+    
 end
