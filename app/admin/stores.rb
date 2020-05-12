@@ -5,7 +5,17 @@ ActiveAdmin.register Store do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :summary
+   permit_params :name, :summary ,:seller_id
+
+   form  do |f|
+    f.inputs "Store Details" do
+      f.input :name
+      f.input :summary
+      f.input :seller_id , as: :select, collection: AdminUser.all
+    end
+    f.actions
+  end
+
   #
   # or
   #

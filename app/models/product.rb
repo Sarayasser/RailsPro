@@ -12,7 +12,8 @@ class Product < ApplicationRecord
     has_many :orders, through: :order_products
     belongs_to :category
     belongs_to :brand
-    belongs_to :seller, :class_name => "User"
+    belongs_to :seller, :class_name => "AdminUser"
+    belongs_to :store
 
     has_one_attached :product_image
     validates :name, presence: true,
