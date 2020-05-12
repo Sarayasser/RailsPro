@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_admin_users! , :except=>[:show,:index]  
+  before_action :authenticate_admin_user! , :except=>[:show,:index]  
   def index
     @products = Product.search(params[:query])
   end
@@ -17,6 +17,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    seller = current_admin_user.id
+    store = Store.find_by(seller_id: seller)
+    @product.update(seller_id: seller)
+    @product.update(store_id: store.id)
     if @product.save
       redirect_to @product
     else
