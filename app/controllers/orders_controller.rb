@@ -57,7 +57,8 @@ class OrdersController < ApplicationController
   def destroy
     if current_admin_user and current_admin_user.role == 'seller'
       @order = OrderProduct.find(params[:id])
-      @order..status != 'canceled'
+      @order.status = 'canceled'
+      @order.save
     elsif current_admin_user and current_admin_user.role == 'buyer'
       @order = Order.find(params[:id])
       @order.destroy
