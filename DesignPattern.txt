@@ -1,0 +1,9 @@
+Design Pattern used in Project : MVC
+Model Control View
+We choose this design pattern for our project as it gives the best results , where we create a model 
+for the each part or page in the project and to this model we add a view to show the page 
+and it's functionalities and the controller holds the functionalities that appear in the view
+which provides the website the result needed with optimal solution provided.
+
+Each page in the project has it's own model and each model is associated with a view and 
+controller.
