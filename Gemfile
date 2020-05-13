@@ -7,6 +7,7 @@ gem 'font-awesome-sass'
 gem 'rails', '~> 6.0.3'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3', '~> 1.4'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -46,9 +47,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-group :production do
-  gem 'pg', '~> 1.2', '>= 1.2.3'
-end
+# group :production do
+#   gem 'pg', '~> 1.2', '>= 1.2.3'
+# end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
