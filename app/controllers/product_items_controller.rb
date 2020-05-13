@@ -19,8 +19,16 @@ def edit
 end
   def create
     product=Product.find(params[:product_id])
+    # product_q=params[:quantity]
+    # puts product_q
     current_cart=@current_cart
-    @product_item=@cart.add_product(product)
+    # pro = Product.find_by(product_id: product_item.product_id)
+    # if product in current_cart
+      
+    # end
+    if product.quantity>0
+      
+      @product_item=@cart.add_product(product)
 
     respond_to do |format|
       if @product_item.save
@@ -33,7 +41,11 @@ end
         
       end
       
+     end
+    else
+        redirect_to root_path, notice: 'product is not available at this moment ' 
     end
+    
   end
 
   def update
@@ -60,10 +72,10 @@ end
   end
   def add_quantity
     @product_item = ProductItem.find(params[:id])
-    @product_item.quantity += 1
+    @product_item.quantity += 1 
     @product_item.save
     redirect_to cart_path(@current_cart)
-  end
+    end
   
   def reduce_quantity
     @product_item = ProductItem.find(params[:id])

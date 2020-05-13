@@ -57,12 +57,7 @@ class CartsController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy 
-    # @cart.destroy if @cart.id == session[:cart_id]
-    # session[:cart_id]=nil
-    # respond_to do |format|
-    #   format.html { redirect_to root_path, notice: 'cart was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
+    
     @cart = @current_cart
     @cart.destroy
     session[:cart_id] = nil
@@ -72,19 +67,28 @@ class CartsController < ApplicationController
 
   def make_order
     @cart = Cart.find(params[:id])
-    puts @cart.product_items.inspect
+    note='Order has been created and is waiting for seller confirmation.'
     @order = Order.create(status: 'pending')
     @cart.product_items.each do |item|
       @product = Product.find(item.product_id)
       @product.quantity -= item.quantity
-      @product.save
-      @order.order_products.create(
-        product_id: item.product_id,
-        quantity: item.quantity,
-        total_price: @cart.total_price
-      )
+
+      if @product.quantity >=0
+        @product.save
+        @order.order_products.create(
+          product_id: item.product_id,
+          quantity: item.quantity,
+          total_price: @cart.total_price
+        )
+        else
+          note='invalid quantity'      
+      end
+      
     end
-    redirect_to root_path, notice: 'Order has been created and is waiting for seller confirmation.'
+    @cart = @current_cart
+    @cart.destroy
+    session[:cart_id] = nil
+    redirect_to root_path, notice: note
   end
 
   private

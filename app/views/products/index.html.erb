@@ -4,11 +4,21 @@
             <div class="col-6">
                 <div class="row">
                     <h1 class="mb-3">Listing Products</h1>
-                    <% if current_admin_user.role == "seller" %>
-                    <%= link_to 'New product', new_product_path , class: 'btn btn-success btn-sm text-light ml-4 mb-3' %>
-                <%end%>
+
+
+
+                    <% if current_admin_user && current_admin_user.role == "seller" %>
+                        <%= link_to 'New product', new_product_path , class: 'btn btn-success btn-sm text-light ml-4 mb-3' %>
+                    <%end%>
+
                     </div>
             </div>
+    <div class="float-right col-3">
+            <%= form_tag products_path, :method => 'get' do %>
+                <%= text_field_tag :query, params[:query], :placeholder => "Search items here", class: "d-block" %>
+                <%= submit_tag "Search", :name => nil, class:"ml-3" %>
+            <% end %>
+        </div>
         </div>
         <br>
         <div class="row mt-3">
@@ -26,6 +36,7 @@
                 <tbody>
                     <%if @products %>
                     <% @products.each do |product|%>
+                    <%if product.quantity > 0 %>
                     <tr>
                         <td><%= product.name %></td>
                         <td><%= product.description %></td>
@@ -47,6 +58,7 @@
                         <%end%>
                     </tr>
                     <% end %>
+                    <%end %>
                     <%else%>
                     <% ' Product not found ' %>
                     <%end %>

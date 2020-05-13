@@ -8,7 +8,11 @@ class ProductsController < ApplicationController
   end
 
   def new
+    if Store.find_by(seller_id: current_admin_user.id)
     @product = Product.new
+  else
+    redirect_to "/admin/stores/new"
+  end
   end
 
   def edit

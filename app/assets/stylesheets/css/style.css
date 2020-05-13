@@ -1894,6 +1894,7 @@ margin-bottom:  30px;
 /*-- 
     - Input Placeholder
 -----------------------------------------*/
+/**
 input:-moz-placeholder, textarea:-moz-placeholder {
   opacity: 1;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
@@ -1911,6 +1912,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
 
 /*--
+
     - Custom Row
 ------------------------------------------*/
 .row-0 {
@@ -3767,7 +3769,7 @@ img.mfp-img {
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  float: right; }
+  }
   .header-advance-search form {
     position: relative; }
   .header-advance-search .input {
@@ -4779,9 +4781,6 @@ img.mfp-img {
     04.1 Hero Slider One
 -----------------------------------------*/
 /*-- Hero Slider --*/
-.hero-slider-one {
-  /*-- Arrow --*/
-  /*-- Dots --*/ }
   .hero-slider-one .slick-arrow {
     display: none !important;
     width: 44px;
@@ -5000,9 +4999,6 @@ img.mfp-img {
       margin-top: 15px; } }
 
 /*-- Slide Content In Animation --*/
-.slick-active {
-  /*-- Hero Image --*/
-  /*-- Hero Content --*/ }
   .slick-active .hero-image img {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
@@ -5034,9 +5030,6 @@ img.mfp-img {
     04.2 Hero Slider Two
 -----------------------------------------*/
 /*-- Hero Slider --*/
-.hero-slider-two {
-  /*-- Arrow --*/
-  /*-- Dots --*/ }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .hero-slider-two {
       width: 100%; } }
@@ -5301,9 +5294,6 @@ img.mfp-img {
       margin-top: 15px; } }
 
 /*-- Slide Content In Animation --*/
-.slick-active {
-  /*-- Hero Image --*/
-  /*-- Hero Content --*/ }
   .slick-active .hero-image-two img {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
@@ -5335,9 +5325,6 @@ img.mfp-img {
     04.3 Hero Slider Three
 -----------------------------------------*/
 /*-- Hero Slider --*/
-.hero-slider-three {
-  /*-- Arrow --*/
-  /*-- Dots --*/ }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .hero-slider-three {
       width: 100%; } }
@@ -5595,9 +5582,6 @@ img.mfp-img {
       margin-top: 15px; } }
 
 /*-- Slide Content In Animation --*/
-.slick-active {
-  /*-- Hero Image --*/
-  /*-- Hero Content --*/ }
   .slick-active .hero-image-three img {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
@@ -5629,9 +5613,6 @@ img.mfp-img {
     04.4 Hero Slider Four
 -----------------------------------------*/
 /*-- Hero Slider --*/
-.hero-slider-four {
-  /*-- Arrow --*/
-  /*-- Dots --*/ }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .hero-slider-four {
       width: 100%; } }
@@ -5954,9 +5935,6 @@ img.mfp-img {
       margin-top: 15px; } }
 
 /*-- Slide Content In Animation --*/
-.slick-active {
-  /*-- Hero Image --*/
-  /*-- Hero Content --*/ }
   .slick-active .hero-image-four img {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
@@ -6276,9 +6254,6 @@ img.mfp-img {
       margin-top: 15px; } }
 
 /*-- Slide Content In Animation --*/
-.slick-active {
-  /*-- Hero Image --*/
-  /*-- Hero Content --*/ }
   .slick-active .hero-image-five img {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
@@ -6374,8 +6349,6 @@ img.mfp-img {
   overflow: hidden; }
 
 /*-- Product Slider Default Style --*/
-.product-slider {
-  /*-- Dots --*/ }
   .product-slider .slick-dots {
     position: absolute;
     left: 50px;
@@ -6493,8 +6466,6 @@ img.mfp-img {
           display: none;
           opacity: 0;
           visibility: hidden; } }
-    .product-slider-arrow-one .product-slider:hover {
-      /*-- Arrow --*/ }
       .product-slider-arrow-one .product-slider:hover .slick-arrow {
         opacity: 1;
         visibility: visible; }
@@ -6639,8 +6610,6 @@ img.mfp-img {
           display: none;
           opacity: 0;
           visibility: hidden; } }
-    .product-slider-arrow-two .product-slider:hover {
-      /*-- Arrow --*/ }
       .product-slider-arrow-two .product-slider:hover .slick-arrow {
         opacity: 1;
         visibility: visible;
@@ -11152,7 +11121,7 @@ img.mfp-img {
   clear: both; }
   .popup-subscribe-form input[type="email"]::-webkit-input-placeholder {
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";*/
     color: #202020; }
   @media only screen and (max-width: 767px) {
     .popup-subscribe-form input[type="email"] {
@@ -11191,7 +11160,7 @@ img.mfp-img {
   text-transform: uppercase;
   margin-bottom: 23px; }
   .about-content h1 span {
-    color: ; }
+    color: blue; }
   @media only screen and (max-width: 767px) {
     .about-content h1 {
       font-size: 24px;
