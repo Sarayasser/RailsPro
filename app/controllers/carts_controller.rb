@@ -68,7 +68,7 @@ class CartsController < ApplicationController
   def make_order
     @cart = Cart.find(params[:id])
     note='Order has been created and is waiting for seller confirmation.'
-    @order = Order.create(status: 'pending')
+    @order = Order.create(status: 'pending', buyer_id: current_admin_user.id)
     @cart.product_items.each do |item|
       @product = Product.find(item.product_id)
       @product.quantity -= item.quantity
@@ -76,6 +76,7 @@ class CartsController < ApplicationController
       if @product.quantity >=0
         @product.save
         @order.order_products.create(
+          status: 'pending',
           product_id: item.product_id,
           quantity: item.quantity,
           total_price: @cart.total_price

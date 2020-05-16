@@ -2,9 +2,9 @@ class OrdersController < ApplicationController
     before_action :authenticate_admin_user! , :except=>[:show,:index]
   def index
     if current_admin_user and current_admin_user.role == 'seller'
-      @orders = current_admin_user.order_products
+      @orders = current_admin_user.order_products.where(status: ['pending', 'confirmed'])
     elsif current_admin_user and current_admin_user.role == 'buyer'
-      @orders = current_admin_user.orders
+      @orders = current_admin_user.buyerOrders
     else
       @orders = Order.all
     end

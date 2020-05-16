@@ -27,7 +27,8 @@ class AdminUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
     has_many :products, :foreign_key => "seller_id"
-    has_many :orders, through: :products
+	has_many :orders, through: :products
+	has_many :buyerOrders, class_name: 'Order', :foreign_key => "buyer_id"
     has_many :order_products, through: :orders
     has_one :store, :foreign_key => "seller_id"
 
